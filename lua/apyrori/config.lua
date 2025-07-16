@@ -31,7 +31,8 @@ config.new(
     command ='rg',
 
     args    = function(text)
-      return {"--vimgrep", "--type", "py", "-w", string.format("import %s", text)}
+      local cwd = vim.fn.getcwd()
+      return {"--vimgrep", "--type", "py", "-w", string.format("import %s", text), cwd}
     end,
 
     parser  = function(results)
